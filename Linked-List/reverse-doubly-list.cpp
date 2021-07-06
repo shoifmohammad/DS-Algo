@@ -5,7 +5,6 @@ using namespace std;
 DLL* reverseDLL(DLL *head) {
     
     DLL *left = NULL, *curr = head, *right = curr;
-    
     while(curr) {
         right = curr->next;
         curr->prev = right;

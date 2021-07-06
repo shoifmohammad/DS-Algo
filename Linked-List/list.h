@@ -22,6 +22,21 @@ void printList(ListNode *head) {
     cout << "\n";
 }
 
+void printCircularList(ListNode *head) {
+
+    if(!head) {
+        cout << "\n";
+        return;
+    }
+
+    ListNode *temp = head;
+    while(temp->next != head) {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    cout << temp->data << "\n";
+}
+
 ListNode* arrayToList(int arr[], int n) {
 
     if(n == 0)
