@@ -7,25 +7,22 @@ ListNode* deleteNodes(ListNode *head) {
     if(!head || !head->next)
         return head;
         
-    deque<int> dq;
+    head = reverseList(head);
+
+    int mx = INT_MIN;
     ListNode *curr = head, *prev = NULL;
     while(curr) {
-        while(!dq.empty() && dq.back() < curr->data)
-            dq.pop_back();
-        dq.push_back(curr->data);
-        curr = curr->next;
-    }
-    
-    curr = head;
-    while(!dq.empty()) {
-        curr->data = dq.front();
-        dq.pop_front();
-        prev = curr;
+        if(curr->data >= mx) {
+            if(prev)
+                prev->next = curr;
+            prev = curr;
+            mx = curr->data;
+        }
         curr = curr->next;
     }
     prev->next = NULL;
     
-    return head;
+    return reverseList(head);
 }
 
 int main() {
